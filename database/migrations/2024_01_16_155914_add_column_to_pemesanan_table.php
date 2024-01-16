@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jenis_kendaraan', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama', 100);
-            $table->timestamps();
+        Schema::table('pemesanan', function (Blueprint $table) {
+            $table->decimal('konsumsi_bbm', 8, 2)->after('jadwal_end');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jenis_kendaraan');
+        Schema::table('pemesanan', function (Blueprint $table) {
+            $table->dropColumn('konsumsi_bbm');
+        });
     }
 };
