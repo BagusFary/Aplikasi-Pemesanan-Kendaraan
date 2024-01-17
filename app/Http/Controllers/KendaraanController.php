@@ -14,7 +14,7 @@ class KendaraanController extends Controller
     {
         if(Auth::check() && Auth::user()->roles == 'admin')
         {
-            $dataKendaraan = Kendaraan::all();
+            $dataKendaraan = Kendaraan::get();
             return view('dashboard.admin.kendaraan.index',["dataKendaraan" => $dataKendaraan]);
         }
     }
@@ -39,9 +39,8 @@ class KendaraanController extends Controller
         }
     }
 
-    public function update(KendaraanRequest $request)
+    public function update(Request $request)
     {
-        dd($request->id);
         if(Auth::check() && Auth::user()->roles == 'admin')
         {
             $updateKendaraan = Kendaraan::findOrFail($request->id);

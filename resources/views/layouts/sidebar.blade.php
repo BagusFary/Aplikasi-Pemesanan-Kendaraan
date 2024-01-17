@@ -39,7 +39,6 @@
                     <div class="justify-content-center">
                         <button type="submit" class="dropdown-item">Logout</button>
                     </div>
-                    {{-- <li><a class="dropdown-item" type="submit" >Logout</a></li> --}}
                 </form>
             </ul>
         </li>
@@ -56,7 +55,7 @@
                         Dashboard
                     </a>
                     @if (Auth::user()->roles == 'admin')
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/driver">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-person" style="color:white"></i></div>
                         Data Driver
                     </a>
