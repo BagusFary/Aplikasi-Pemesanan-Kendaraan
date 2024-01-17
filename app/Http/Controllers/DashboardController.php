@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Driver;
+use App\Models\Kendaraan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +13,12 @@ class DashboardController extends Controller
     {
         if(Auth::check())
         {
-            return view('dashboard.index');
+            $totalDriver = Driver::count();
+            $totalKendaraan = Kendaraan::count();
+            return view('dashboard.index',[
+                'totalDriver' => $totalDriver,
+                'totalKendaraan' => $totalKendaraan
+            ]);
         }
     }
 

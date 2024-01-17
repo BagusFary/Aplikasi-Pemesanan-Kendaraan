@@ -59,13 +59,13 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-person" style="color:white"></i></div>
                         Data Driver
                     </a>
-                    <a class="nav-link" href="index.html">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group" style="color:white"></i></div>
-                        Data Pegawai
-                    </a>
                     <a class="nav-link" href="/kendaraan">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-car-side" style="color:white"></i></div>
                         Data Kendaraan
+                    </a>
+                    <a class="nav-link" href="/pemesanan">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-bell" style="color:white"></i></div>
+                        Pemesanan
                     </a>
                     @endif
                 </div>

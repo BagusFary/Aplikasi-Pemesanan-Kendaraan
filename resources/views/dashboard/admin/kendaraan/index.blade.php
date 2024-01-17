@@ -3,6 +3,10 @@
 @section('sidebar-content')
 <main>
     <div class="container-fluid px-4">
+        <h1 class="mt-4">Kendaraan</h1>
+        <ol class="breadcrumb mb-1">
+            <li class="breadcrumb-item active">Data Kendaraan</li>
+        </ol>
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modalTambah">
                 <i class="fa-solid fa-plus"></i>
@@ -88,7 +92,7 @@
         <div class="card mb-4 mt-2">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Data Kendaraan
+                List Data Kendaraan
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
@@ -107,7 +111,7 @@
                         <tr>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->plat }}</td>
-                            <td>Rp.{{ $item->konsumsi_bbm_per_km }}</td>
+                            <td>{{"Rp " . number_format($item->konsumsi_bbm_per_km,2,',','.')  }}</td>
                             <td>
                                 @if ($item->kepemilikan == 'perusahaan')
                                 Perusahaan

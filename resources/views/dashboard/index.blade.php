@@ -12,8 +12,7 @@
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">Total Driver</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        
-                        <div class="small text-white">24</div>
+                        <div class="medium text-white">{{ $totalDriver }}</div>
                     </div>
                 </div>
             </div>
@@ -21,8 +20,7 @@
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">Total Kendaraan</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        
-                        <div class="small text-white">12</div>
+                        <div class="medium text-white">{{ $totalKendaraan }}</div>
                     </div>
                 </div>
             </div>

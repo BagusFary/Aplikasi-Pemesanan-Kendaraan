@@ -3,6 +3,10 @@
 @section('sidebar-content')
 <main>
     <div class="container-fluid px-4">
+        <h1 class="mt-4">Driver</h1>
+        <ol class="breadcrumb mb-1">
+            <li class="breadcrumb-item active">Data Driver</li>
+        </ol>
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i class="fa-solid fa-plus"></i>
@@ -71,7 +75,7 @@
         <div class="card mb-4 mt-2">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Data Driver
+                List Data Driver
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">

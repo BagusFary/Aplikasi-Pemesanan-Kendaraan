@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DriverController;
-use App\Http\Controllers\KendaraanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DriverController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\PemesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/store-driver', [DriverController::class, 'store']);
     Route::post('/update-driver',[DriverController::class, 'update']);
     Route::post('/delete-driver', [DriverController::class, 'destroy']);
+    Route::get('/pemesanan', [PemesananController::class, 'index']);
+    Route::post('/store-pemesanan', [PemesananController::class, 'store']);
+    Route::post('/update-pemesanan',[PemesananController::class, 'update']);
+    Route::post('/delete-pemesanan', [PemesananController::class, 'destroy']);
 
 });
 
