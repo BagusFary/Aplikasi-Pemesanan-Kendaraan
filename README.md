@@ -4,7 +4,9 @@
 Technical Test - Sekawan Media
 
 XAMPP Versi 3.2.4
+
 PHP 8.1.13
+
 Framework Laravel
 
 # Bagian Belum Selesai
