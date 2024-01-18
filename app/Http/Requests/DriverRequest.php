@@ -23,7 +23,7 @@ class DriverRequest extends FormRequest
     {
         return [
             'nama' => 'required|max:100',
-            'email' => 'required|unique:drivers|max:100',
+            'email' => 'required|unique:drivers|max:100|email',
             'phone' => 'required',
         ];
     }
