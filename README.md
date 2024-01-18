@@ -24,9 +24,6 @@ Install dependencies
   cp .env.example .env 
 ```
 ```bash
-   configure your env 
-```
-```bash
   composer install
 ```
 ```bash
@@ -36,13 +33,10 @@ Install dependencies
   php artisan key:generate
 ```
 ```bash
-  php artisan storage:link
-```
-```bash
   php artisan migrate
 ```
 ```bash
-  php artisan db:seed
+  php artisan db:seed --class=AdminSeeder
 ```
 Start the server
 ```bash
