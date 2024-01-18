@@ -4,6 +4,7 @@
 Technical Test - Sekawan Media
 
 # Bagian Belum Selesai
+- Riwayat Pemakaian Kendaraan
 - Grafik Pemakaian Kendaraan
 - Laporan Periodik Export Excel
 
