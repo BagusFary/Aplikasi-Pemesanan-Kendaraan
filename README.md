@@ -3,6 +3,10 @@
 
 Technical Test - Sekawan Media
 
+XAMPP Versi 3.2.4
+PHP 8.1.13
+Framework Laravel
+
 # Bagian Belum Selesai
 - Riwayat Pemakaian Kendaraan
 - Grafik Pemakaian Kendaraan
@@ -60,6 +64,7 @@ Password : 12345678
 
 ## Physical Data Model
 ![PDM Aplikasi Pemesanan Kendaraan2](https://github.com/BagusFary/Aplikasi-Pemesanan-Kendaraan/assets/51037655/804f66bd-e648-45b5-a412-7fb6e2be7347)
+
 
 
 
