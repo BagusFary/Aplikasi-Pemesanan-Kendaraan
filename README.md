@@ -3,6 +3,9 @@
 
 Technical Test - Sekawan Media
 
+# Bagian Belum Selesai
+- Grafik Pemakaian Kendaraan
+- Laporan Periodik Export Excel
 
 ## Setup Project
 
