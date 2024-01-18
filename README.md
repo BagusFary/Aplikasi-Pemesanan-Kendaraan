@@ -1,15 +1,7 @@
 
-# Laravel Web Course
-<p align="center">
-<img src="https://github.com/BagusFary/CourseLaravel/blob/master/laravellogo.png" width="200" height="200" />
-</p>
-Website Laravel Backend dengan tema web course dimana user dapat memesan/order dan mengakses course yang sudah dibeli menggunakan sistem payment manual berupa Admin Approvement.
+# Aplikasi Pemesanan Kendaraan
 
-- User Dashboard
-- Admin Dashboard
-- Course Management (CRUD Course)
-- Admin Approve Orders (Manual Approvement)
-
+Technical Test - Sekawan Media
 
 
 ## Setup Project
@@ -17,13 +9,13 @@ Website Laravel Backend dengan tema web course dimana user dapat memesan/order d
 Clone the project
 
 ```bash
-  git clone https://github.com/BagusFary/CourseLaravel
+  git clone https://github.com/BagusFary/Aplikasi-Pemesanan-Kendaraan
 ```
 
 Go to the project directory
 
 ```bash
-  cd CourseLaravel
+  cd Aplikasi-Pemesanan-Kendaraan
 ```
 
 Install dependencies
@@ -33,11 +25,6 @@ Install dependencies
 ```
 ```bash
    configure your env 
-   FILESYSTEM_DISK=public
-   QUEUE_CONNECTION=database
-```
-```bash
-  Configure your mailtrap to set up mail notifications
 ```
 ```bash
   composer install
@@ -64,11 +51,6 @@ Start the server
 ```bash
   php artisan serve
 ```
-```bash
-  php artisan queue:work
-```
-
-
 
 
 
@@ -78,8 +60,6 @@ Start the server
 Email    : admin@gmail.com\
 Password : 12345678
 
-- User\
-Password for all users email is '12345678'
 
 
 
