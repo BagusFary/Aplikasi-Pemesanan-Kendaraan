@@ -10,6 +10,7 @@ PHP 8.1.13
 Framework Laravel
 
 # Bagian Belum Selesai
+- Panduan Penggunaan Aplikasi Pemesanan Kendaraan
 - Riwayat Pemakaian Kendaraan
 - Grafik Pemakaian Kendaraan
 - Laporan Periodik Export Excel
