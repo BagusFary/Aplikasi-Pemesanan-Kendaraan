@@ -54,6 +54,9 @@ Start the server
 Email    : admin@gmail.com\
 Password : 12345678
 
+## Physical Data Model
+![PDM Aplikasi Pemesanan Kendaraan2](https://github.com/BagusFary/Aplikasi-Pemesanan-Kendaraan/assets/51037655/804f66bd-e648-45b5-a412-7fb6e2be7347)
+
 
 
 
