@@ -38,9 +38,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/update-pihak', [PihakController::class, 'update']);
     Route::post('/delete-pihak', [PihakController::class, 'destroy']);
     Route::get('/persetujuan',[PersetujuanController::class,'index']);
-    Route::post('/setuju',[PersetujuanController::class,'setuju']);
-    Route::post('/tidak-setuju',[PersetujuanController::class,'tidakSetuju']);
-
+    Route::post('/setuju',[PersetujuanController::class,'persetujuan']);
 });
 
 

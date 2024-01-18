@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Pemesanan;
 use App\Models\Persetujuan;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class PersetujuanController extends Controller
         }
     }
 
-    public function setuju(Request $request)
+    public function persetujuan(Request $request)
     {
         if(Auth::check() )
         {
@@ -31,13 +32,34 @@ class PersetujuanController extends Controller
                 Alert::error('Failed', 'Anda sudah melakukan persetujuan');
                 return redirect('/persetujuan');
             }
-            $dataSetuju = Persetujuan::create([
+            $dataPersetujuan = Persetujuan::create([
                 'user_id' => $request->user_id,
                 'pemesanan_id' => $request->pemesanan_id,
                 'is_approved' => $is_approved,
             ]);
+            
+            $persetujuan_count = $pemesanan->persetujuan()->where('is_approved',true)->count();
 
-            if($dataSetuju)
+            if($persetujuan_count >= 2)
+            {
+                $pemesanan->update([
+                    'status' => 1
+                ]);
+            } 
+
+            $userTotal = User::where('roles', 'user')->count();
+
+            $total_persetujuan = $pemesanan->persetujuan()->count();
+
+            if ($userTotal === $total_persetujuan) {
+                if ($persetujuan_count < 2) { 
+                    $pemesanan->update([
+                        'status' => 2,
+                    ]);
+                }
+            }
+
+            if($dataPersetujuan)
             {
                 Alert::success('Success', 'Persetujuan Pemesanan Berhasil');
                 return redirect('/persetujuan');

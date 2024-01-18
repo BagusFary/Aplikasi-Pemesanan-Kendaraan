@@ -37,10 +37,14 @@
                             <td>{{ $item->jadwal_end }}</td>
                             <td>{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}</td>
                             <td>
-                                @if ($item->is_status == false)
-                                    <span class="badge rounded-pill text-bg-secondary">TIDAK AKTIF</span>
-                                @elseif($item->is_status == true)
-                                    <span class="badge rounded-pill text-bg-success">AKTIF</span>
+                                @if ($item->status === 0)
+                                <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
+                                @elseif($item->status === 1)
+                                <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
+                                @elseif($item->status === 2)
+                                <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
+                                @elseif($item->status === 3)
+                                <span class="badge rounded-pill text-bg-success">SELESAI</span>
                                 @endif
                             </td>
                             <td>
