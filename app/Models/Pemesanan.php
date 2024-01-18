@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Persetujuan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -41,5 +43,10 @@ class Pemesanan extends Model
     public function kendaraan(): BelongsTo
     {
         return $this->belongsTo(Kendaraan::class, 'kendaraan_id', 'id');
+    }
+
+    public function persetujuan(): HasMany
+    {
+        return $this->hasMany(Persetujuan::class, 'pemesanan_id', 'id');
     }
 }

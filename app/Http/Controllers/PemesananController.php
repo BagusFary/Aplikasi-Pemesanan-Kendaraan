@@ -15,15 +15,14 @@ class PemesananController extends Controller
 {
     public function index()
     {
-        if(Auth::check())
+        if(Auth::check() && Auth::user()->roles == 'admin')
         {
-            $dataUser = User::where('roles','user')->select('id','name')->get();
+
             $dataKendaraan = Kendaraan::select('id','nama')->get();
             $dataDriver = Driver::select('id','nama')->get();
             $dataPemesanan = Pemesanan::with('user:id,name','driver:id,nama','kendaraan:id,nama')->get();
             return view('dashboard.pemesanan.index',[
                 "dataPemesanan" => $dataPemesanan,
-                "dataUser" => $dataUser,
                 "dataKendaraan" => $dataKendaraan,
                 "dataDriver" => $dataDriver
             ]);
@@ -32,7 +31,7 @@ class PemesananController extends Controller
 
     public function store(PemesananRequest $request)
     {
-        if(Auth::check())
+        if(Auth::check() && Auth::user()->roles == 'admin')
         {
             $dataKendaraan = Kendaraan::where('id',$request->kendaraan_id)->get();
             $request['konsumsi_bbm'] = $dataKendaraan[0]->konsumsi_bbm_per_km * $request->konsumsi_bbm;
@@ -46,6 +45,26 @@ class PemesananController extends Controller
             } else {
                 
                 Alert::error('Failed', 'Tambah Data Gagal');
+                return redirect('/pemesanan');
+            }
+        }
+    }
+
+    public function update(PemesananRequest $request)
+    {
+        if(Auth::check() && Auth::user()->roles == 'admin')
+        {
+            $updatePemesanan = Pemesanan::findOrFail($request->id);
+            $updatePemesanan->update($request->all());
+
+            if($updatePemesanan)
+            {
+                Alert::success('Success', 'Data Berhasil Disimpan');
+                return redirect('/pemesanan');
+                
+            } else {
+                
+                Alert::error('Failed', 'Data Berhasil Disimpan');
                 return redirect('/pemesanan');
             }
         }

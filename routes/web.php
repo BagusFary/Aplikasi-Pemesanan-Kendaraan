@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PihakController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\PersetujuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +33,20 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/store-pemesanan', [PemesananController::class, 'store']);
     Route::post('/update-pemesanan',[PemesananController::class, 'update']);
     Route::post('/delete-pemesanan', [PemesananController::class, 'destroy']);
+    Route::get('/pihak', [PihakController::class, 'index']);
+    Route::post('/store-pihak', [PihakController::class, 'store']);
+    Route::post('/update-pihak', [PihakController::class, 'update']);
+    Route::post('/delete-pihak', [PihakController::class, 'destroy']);
+    Route::get('/persetujuan',[PersetujuanController::class,'index']);
+    Route::post('/setuju',[PersetujuanController::class,'setuju']);
+    Route::post('/tidak-setuju',[PersetujuanController::class,'tidakSetuju']);
 
 });
 
 
-Auth::routes();
+Auth::routes(['register' => false,
+                'reset' => false, 
+                'verify' => false,
+            ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

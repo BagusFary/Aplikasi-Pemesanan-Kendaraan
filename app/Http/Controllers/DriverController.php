@@ -49,10 +49,10 @@ class DriverController extends Controller
 
             if($updateDriver)
             {
-                Alert::success('Success', 'Update Data Berhasil');
+                Alert::success('Success', 'Data Berhasil Disimpan');
                 return redirect('/driver');
             } else {
-                Alert::success('Failed', 'Update Data Gagal');
+                Alert::success('Failed', 'Data Berhasil Disimpan');
                 return redirect('/driver');
             }
         }

@@ -54,6 +54,12 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-line" style="color:white"></i></div>
                         Dashboard
                     </a>
+                    @if (Auth::user()->roles == 'user')
+                    <a class="nav-link" href="/persetujuan">
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-handshake" style="color:white"></i></div>
+                        Persetujuan Pemesanan
+                    </a>
+                    @endif
                     @if (Auth::user()->roles == 'admin')
                     <a class="nav-link" href="/driver">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-person" style="color:white"></i></div>
@@ -66,6 +72,10 @@
                     <a class="nav-link" href="/pemesanan">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-bell" style="color:white"></i></div>
                         Pemesanan
+                    </a>
+                    <a class="nav-link" href="/pihak">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group" style="color:white"></i></div>
+                        Data Pihak
                     </a>
                     @endif
                 </div>
