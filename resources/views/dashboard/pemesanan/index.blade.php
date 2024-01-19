@@ -7,7 +7,11 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Data Pemesanan</li>
             </ol>
-            <div class="d-flex justify-content-end mb-2">
+            <div class="d-flex justify-content-between mb-2">
+                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalTambah">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export Excel
+                </button>
                 <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#modalTambah">
                     <i class="fa-solid fa-plus"></i>
                     Tambah Pemesanan
@@ -184,10 +188,14 @@
                         <br>
                         <h6>
                             Status :
-                            @if ($item->is_status == false)
-                                <span class="badge rounded-pill text-bg-secondary">INACTIVE</span>
-                            @elseif($item->is_status == true)
-                                <span class="badge rounded-pill text-bg-success">ACTIVE</span>
+                            @if ($item->status === 0)
+                                <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
+                                @elseif($item->status === 1)
+                                <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
+                                @elseif($item->status === 2)
+                                <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
+                                @elseif($item->status === 3)
+                                <span class="badge rounded-pill text-bg-success">SELESAI</span>
                             @endif
                         </h6>
                         <br>
