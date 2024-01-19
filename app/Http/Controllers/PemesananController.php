@@ -114,11 +114,17 @@ class PemesananController extends Controller
 
     public function exportExcel(Request $request)
     {
-        if(Auth::check() && Auth::user()->roles == 'admin')
+        if($request->tanggal_awal > $request->tanggal_akhir || $request->tanggal_awal >= $request->tanggal_akhir)
         {
-            return (new PemesananExport($request->tanggal_awal,$request->tanggal_akhir))->download('DataPemesanan.xlsx');
+            Alert::warning('Warning', 'Jadwal Berakhir tidak boleh diatas atau sama dengan jadwal Mulai');
+            return redirect('/pemesanan');
         } else {
-            return view('error.401');
+            if(Auth::check() && Auth::user()->roles == 'admin')
+            {
+                    return (new PemesananExport($request->tanggal_awal,$request->tanggal_akhir))->download('DataPemesanan.xlsx');
+                } else {
+                    return view('error.401');
+            }
         }
     }
 }
