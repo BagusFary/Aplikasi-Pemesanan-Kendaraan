@@ -34,46 +34,59 @@ class PemesananController extends Controller
 
     public function store(PemesananRequest $request)
     {
-        if(Auth::check() && Auth::user()->roles == 'admin')
+        if($request->jadwal_start > $request->jadwal_end || $request->jadwal_start >= $request->jadwal_end)
         {
-            $dataKendaraan = Kendaraan::where('id',$request->kendaraan_id)->get();
-            $request['konsumsi_bbm'] = $dataKendaraan[0]->konsumsi_bbm_per_km * $request->konsumsi_bbm;
-            $tambahPemesanan = Pemesanan::create($request->all());
-
-            if($tambahPemesanan)
+            Alert::warning('Warning', 'Jadwal Berakhir tidak boleh diatas atau sama dengan jadwal Mulai');
+            return redirect('/pemesanan');
+        } else {
+            if(Auth::check() && Auth::user()->roles == 'admin')
             {
-                Alert::success('Success', 'Tambah Data Berhasil');
-                return redirect('/pemesanan');
-                
-            } else {
-                
-                Alert::error('Failed', 'Tambah Data Gagal');
-                return redirect('/pemesanan');
+                $dataKendaraan = Kendaraan::where('id',$request->kendaraan_id)->get();
+                $request['konsumsi_bbm'] = $dataKendaraan[0]->konsumsi_bbm_per_km * $request->konsumsi_bbm;
+                $tambahPemesanan = Pemesanan::create($request->all());
+    
+                if($tambahPemesanan)
+                {
+                    Alert::success('Success', 'Tambah Data Berhasil');
+                    return redirect('/pemesanan');
+                    
+                } else {
+                    
+                    Alert::error('Failed', 'Tambah Data Gagal');
+                    return redirect('/pemesanan');
+                }
+            }else {
+                return view('error.401');
             }
-        }else {
-            return view('error.401');
         }
+        
     }
 
     public function update(PemesananRequest $request)
     {
-        if(Auth::check() && Auth::user()->roles == 'admin')
+        if($request->jadwal_start > $request->jadwal_end || $request->jadwal_start >= $request->jadwal_end)
         {
-            $updatePemesanan = Pemesanan::findOrFail($request->id);
-            $updatePemesanan->update($request->all());
-
-            if($updatePemesanan)
+            Alert::warning('Warning', 'Jadwal Berakhir tidak boleh diatas atau sama dengan jadwal Mulai');
+            return redirect('/pemesanan');
+        } else {
+            if(Auth::check() && Auth::user()->roles == 'admin')
             {
-                Alert::success('Success', 'Data Berhasil Disimpan');
-                return redirect('/pemesanan');
-                
-            } else {
-                
-                Alert::error('Failed', 'Data Berhasil Disimpan');
-                return redirect('/pemesanan');
+                $updatePemesanan = Pemesanan::findOrFail($request->id);
+                $updatePemesanan->update($request->all());
+    
+                if($updatePemesanan)
+                {
+                    Alert::success('Success', 'Data Berhasil Disimpan');
+                    return redirect('/pemesanan');
+                    
+                } else {
+                    
+                    Alert::error('Failed', 'Data Berhasil Disimpan');
+                    return redirect('/pemesanan');
+                }
+            }else {
+                return view('error.401');
             }
-        }else {
-            return view('error.401');
         }
     }
 
