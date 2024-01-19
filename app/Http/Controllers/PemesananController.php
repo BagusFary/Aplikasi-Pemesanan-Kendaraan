@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PemesananExport;
 use App\Models\User;
 use App\Models\Driver;
 use App\Models\Kendaraan;
@@ -87,6 +88,14 @@ class PemesananController extends Controller
                 Alert::error('Failed', 'Hapus Pemesanan Gagal');
                 return redirect('/pemesanan');
             }
+        }
+    }
+
+    public function exportExcel(Request $request)
+    {
+        if(Auth::check())
+        {
+            return (new PemesananExport($request->jadwal_start,$request->jadwal_end))->download('DataPemesanan.xlsx');
         }
     }
 }

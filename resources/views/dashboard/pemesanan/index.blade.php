@@ -8,9 +8,9 @@
                 <li class="breadcrumb-item active">Data Pemesanan</li>
             </ol>
             <div class="d-flex justify-content-between mb-2">
-                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalTambah">
+                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalExcel">
                     <i class="fa-solid fa-file-export"></i>
-                    Export Excel
+                    Export Pemesanan
                 </button>
                 <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#modalTambah">
                     <i class="fa-solid fa-plus"></i>
@@ -18,28 +18,28 @@
                 </button>
             </div>
             <div class="my-2">
-            @if ($errors->any())
-            @foreach ($errors->all() as $error)
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Failed.</strong> {{ $error }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endforeach
-            @endif
-            @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success</strong> {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Failed.</strong> {{ $error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endforeach
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success</strong> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
 
-            @if(session('failed'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Failed</strong> {{ session('failed') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                @if (session('failed'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Failed</strong> {{ session('failed') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
             </div>
-            @endif
-        </div>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -70,13 +70,13 @@
                                     <td>{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}</td>
                                     <td>
                                         @if ($item->status === 0)
-                                        <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
+                                            <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
                                         @elseif($item->status === 1)
-                                        <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
+                                            <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
                                         @elseif($item->status === 2)
-                                        <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
+                                            <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
                                         @elseif($item->status === 3)
-                                        <span class="badge rounded-pill text-bg-success">SELESAI</span>
+                                            <span class="badge rounded-pill text-bg-success">SELESAI</span>
                                         @endif
                                     </td>
                                     <td>
@@ -98,7 +98,41 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modalExcel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Export Laporan Pemenesanan</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/export-excel" method="post">
+                            @csrf
+                            <div class="mb-2">
+                                <label for="jadwal_start">Dari Tanggal</label>
+                                <input type="date" class="form-control" id="jadwal_start" name="jadwal_start" placeholder="Masukkan tanggal"
+                                    required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="jadwal_end">Hingga Tanggal</label>
+                                <input type="date" class="form-control" id="jadwal_end" name="jadwal_end" placeholder="Masukkan tanggal"
+                                    required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-file-export"></i> Export Pemesanan</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </main>
+
+
 
 
     <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -152,6 +186,9 @@
         </div>
     </div>
 
+
+
+
     @foreach ($dataPemesanan as $item)
         <div class="modal fade" id="modalDelete-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -190,11 +227,11 @@
                             Status :
                             @if ($item->status === 0)
                                 <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
-                                @elseif($item->status === 1)
+                            @elseif($item->status === 1)
                                 <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
-                                @elseif($item->status === 2)
+                            @elseif($item->status === 2)
                                 <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
-                                @elseif($item->status === 3)
+                            @elseif($item->status === 3)
                                 <span class="badge rounded-pill text-bg-success">SELESAI</span>
                             @endif
                         </h6>
@@ -230,14 +267,17 @@
                                 <label for="driver_id">Driver</label>
                                 <select class="form-select" id="driver_id" name="driver_id">
                                     @foreach ($dataDriver as $driverSelect)
-                                        <option value="{{ $driverSelect->id }}" {{ $item->driver->id == $driverSelect->id ? 'selected' : '' }}>{{ $driverSelect->nama }}</option>
+                                        <option value="{{ $driverSelect->id }}"
+                                            {{ $item->driver->id == $driverSelect->id ? 'selected' : '' }}>
+                                            {{ $driverSelect->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-2">
                                 <label for="kendaraan_id">Kendaraan</label>
                                 <input type="hidden" name="kendaraan_id" value="{{ $item->kendaraan->id }}">
-                                <input type="text" class="form-control" id="kendaraan_id" value="{{ $item->kendaraan->nama }}" disabled>
+                                <input type="text" class="form-control" id="kendaraan_id"
+                                    value="{{ $item->kendaraan->nama }}" disabled>
                             </div>
                             <div class="mb-2">
                                 <label for="konsumsi_bbm">Jarak Konsumsi BBM (KM)</label>
