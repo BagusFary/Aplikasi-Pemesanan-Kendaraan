@@ -283,8 +283,8 @@
                             </div>
                             <div class="mb-2">
                                 <label for="konsumsi_bbm">Jarak Konsumsi BBM (KM)</label>
-                                <input type="number" class="form-control" id="konsumsi_bbm" name="konsumsi_bbm"
-                                    value="{{ $item->konsumsi_bbm }}" placeholder="Inputkan Angka" disabled>
+                                <input type="text" class="form-control" id="konsumsi_bbm" name="konsumsi_bbm"
+                                    value="{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}" placeholder="Inputkan Angka" disabled>
                             </div>
                             <div class="mb-2">
                                 <label for="jadwal_start">Jadwal Mulai</label>
