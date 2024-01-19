@@ -57,14 +57,16 @@
                                     <td>{{ $item->email }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                data-bs-target="#modalEdit-{{ $item->id }}">
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#modalDelete-{{ $item->id }}">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
+                                            <div class="d-flex gap-2">
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                    data-bs-target="#modalEdit-{{ $item->id }}">
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modalDelete-{{ $item->id }}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

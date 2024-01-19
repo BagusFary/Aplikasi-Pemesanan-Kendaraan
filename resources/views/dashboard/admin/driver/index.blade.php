@@ -95,14 +95,16 @@
                             <td>{{ $item->phone }}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                        data-bs-target="#editModal-{{ $item->id }}">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal-{{ $item->id }}">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
+                                    <div class="d-flex gap-2">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#editModal-{{ $item->id }}">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal-{{ $item->id }}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
                                     <div class="modal fade" id="editModal-{{ $item->id }}" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
