@@ -45,6 +45,8 @@ class PihakController extends Controller
                 Alert::error('Failed', 'Tambah Data Gagal');
                 return redirect('/pihak');
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -68,6 +70,8 @@ class PihakController extends Controller
                 Alert::error('Failed', 'Update Data Pihak Gagal');
                 return redirect('/pihak');
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -89,6 +93,8 @@ class PihakController extends Controller
                 return redirect('/pihak');
             }
 
+        }else {
+            return view('error.401');
         }
     }
 }

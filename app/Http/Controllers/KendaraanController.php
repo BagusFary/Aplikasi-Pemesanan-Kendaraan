@@ -16,6 +16,8 @@ class KendaraanController extends Controller
         {
             $dataKendaraan = Kendaraan::get();
             return view('dashboard.admin.kendaraan.index',["dataKendaraan" => $dataKendaraan]);
+        }else {
+            return view('error.401');
         }
     }
 
@@ -36,6 +38,8 @@ class KendaraanController extends Controller
                 Alert::error('Failed', 'Tambah Data Gagal');
                 return redirect('/kendaraan');
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -63,6 +67,8 @@ class KendaraanController extends Controller
                 return redirect('/kendaraan');
 
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -84,6 +90,8 @@ class KendaraanController extends Controller
                 Alert::error('Failed', 'Gagal Menghapus Kendaraan');
                 return redirect('/kendaraan');
             }
+        }else {
+            return view('error.401');
         }
     }
 }

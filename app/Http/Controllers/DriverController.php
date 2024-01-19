@@ -16,6 +16,8 @@ class DriverController extends Controller
         {
             $dataDriver = Driver::get();
             return view('dashboard.admin.driver.index',["dataDriver" => $dataDriver]);
+        }else {
+            return view('error.401');
         }
     }
 
@@ -33,6 +35,8 @@ class DriverController extends Controller
                 Alert::success('Failed', 'Tambah Data Gagal');
                 return redirect('/driver');
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -55,6 +59,8 @@ class DriverController extends Controller
                 Alert::success('Failed', 'Data Berhasil Disimpan');
                 return redirect('/driver');
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -73,6 +79,8 @@ class DriverController extends Controller
                 Alert::success('Failed', 'Hapus Data Gagal');
                 return redirect('/driver');
             }
+        }else {
+            return view('error.401');
         }
     }
 }

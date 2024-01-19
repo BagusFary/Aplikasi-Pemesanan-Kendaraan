@@ -27,6 +27,8 @@ class DashboardController extends Controller
         if(Auth::check() && Auth::user()->roles == 'admin')
         {
             return view('dashboard.admin.kendaraan.index');
+        }else {
+            return view('error.401');
         }
     }
 

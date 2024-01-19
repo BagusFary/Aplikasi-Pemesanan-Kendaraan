@@ -27,6 +27,8 @@ class PemesananController extends Controller
                 "dataKendaraan" => $dataKendaraan,
                 "dataDriver" => $dataDriver
             ]);
+        }else {
+            return view('error.401');
         }
     }
 
@@ -48,6 +50,8 @@ class PemesananController extends Controller
                 Alert::error('Failed', 'Tambah Data Gagal');
                 return redirect('/pemesanan');
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -68,6 +72,8 @@ class PemesananController extends Controller
                 Alert::error('Failed', 'Data Berhasil Disimpan');
                 return redirect('/pemesanan');
             }
+        }else {
+            return view('error.401');
         }
     }
 
@@ -88,14 +94,18 @@ class PemesananController extends Controller
                 Alert::error('Failed', 'Hapus Pemesanan Gagal');
                 return redirect('/pemesanan');
             }
+        }else {
+            return view('error.401');
         }
     }
 
     public function exportExcel(Request $request)
     {
-        if(Auth::check())
+        if(Auth::check() && Auth::user()->roles == 'admin')
         {
             return (new PemesananExport($request->tanggal_awal,$request->tanggal_akhir))->download('DataPemesanan.xlsx');
+        } else {
+            return view('error.401');
         }
     }
 }
