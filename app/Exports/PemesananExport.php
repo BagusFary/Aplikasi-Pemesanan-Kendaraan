@@ -15,8 +15,8 @@ class PemesananExport implements FromQuery, WithMapping, WithHeadings
     * @return \Illuminate\Support\Collection
     */
     use Exportable;
-    protected $tanggal_awal;
-    protected $tanggal_akhir;
+    public $tanggal_awal;
+    public $tanggal_akhir;
 
     public function __construct($tanggal_awal, $tanggal_akhir)
     {
@@ -27,8 +27,7 @@ class PemesananExport implements FromQuery, WithMapping, WithHeadings
     public function query()
     {
         return Pemesanan::with('user:id,name','driver:id,nama','kendaraan:id,nama')
-                        ->whereBetween('created_at',[$this->tanggal_awal,$this->tanggal_akhir])
-                        ->get();
+                        ->whereBetween('dibuat_pada',[$this->tanggal_awal,$this->tanggal_akhir]);
     }
 
     public function map($pemesanan): array

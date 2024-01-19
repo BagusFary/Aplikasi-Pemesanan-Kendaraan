@@ -95,7 +95,7 @@ class PemesananController extends Controller
     {
         if(Auth::check())
         {
-            return (new PemesananExport($request->jadwal_start,$request->jadwal_end))->download('DataPemesanan.xlsx');
+            return (new PemesananExport($request->tanggal_awal,$request->tanggal_akhir))->download('DataPemesanan.xlsx');
         }
     }
 }
