@@ -13,6 +13,7 @@ Framework Laravel
 - Panduan Penggunaan Aplikasi Pemesanan Kendaraan
 - Riwayat Pemakaian Kendaraan
 - Grafik Pemakaian Kendaraan
+- Laporan Periodik Pemesanan Kendaraaan (Updated / Done)
 
 ## Setup Project
 
