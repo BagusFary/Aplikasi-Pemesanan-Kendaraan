@@ -15,20 +15,20 @@ class PemesananExport implements FromQuery, WithMapping, WithHeadings
     * @return \Illuminate\Support\Collection
     */
     use Exportable;
-    protected $jadwal_start;
-    protected $jadwal_end;
+    protected $tanggal_awal;
+    protected $tanggal_akhir;
 
-    public function __construct($jadwal_start, $jadwal_end)
+    public function __construct($tanggal_awal, $tanggal_akhir)
     {
-        $this->jadwal_start = $jadwal_start;
-        $this->jadwal_end = $jadwal_end;
+        $this->tanggal_awal = $tanggal_awal;
+        $this->tanggal_akhir = $tanggal_akhir;
     }
     
     public function query()
     {
         return Pemesanan::with('user:id,name','driver:id,nama','kendaraan:id,nama')
-                        ->where('jadwal_start',$this->jadwal_start)
-                        ->where('jadwal_end',$this->jadwal_end);
+                        ->whereBetween('created_at',[$this->tanggal_awal,$this->tanggal_akhir])
+                        ->get();
     }
 
     public function map($pemesanan): array

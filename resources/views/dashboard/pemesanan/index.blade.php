@@ -56,6 +56,7 @@
                                 <th>Jadwal Berakhir</th>
                                 <th>Konsumsi BBM per KM</th>
                                 <th>Status</th>
+                                <th>Dibuat Pada</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -79,6 +80,7 @@
                                             <span class="badge rounded-pill text-bg-success">SELESAI</span>
                                         @endif
                                     </td>
+                                    <td>{{ date_format($item->created_at, "Y-m-d") }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
@@ -111,13 +113,13 @@
                         <form action="/export-excel" method="post">
                             @csrf
                             <div class="mb-2">
-                                <label for="jadwal_start">Dari Tanggal</label>
-                                <input type="date" class="form-control" id="jadwal_start" name="jadwal_start" placeholder="Masukkan tanggal"
+                                <label for="tanggal_awal">Dari Tanggal</label>
+                                <input type="date" class="form-control" id="tanggal_awal" name="tanggal_awal" placeholder="Masukkan tanggal"
                                     required>
                             </div>
                             <div class="mb-2">
-                                <label for="jadwal_end">Hingga Tanggal</label>
-                                <input type="date" class="form-control" id="jadwal_end" name="jadwal_end" placeholder="Masukkan tanggal"
+                                <label for="tanggal_akhir">Hingga Tanggal</label>
+                                <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir" placeholder="Masukkan tanggal"
                                     required>
                             </div>
                             <div class="modal-footer">
