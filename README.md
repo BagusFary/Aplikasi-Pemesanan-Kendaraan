@@ -13,7 +13,6 @@ Framework Laravel
 - Panduan Penggunaan Aplikasi Pemesanan Kendaraan
 - Riwayat Pemakaian Kendaraan
 - Grafik Pemakaian Kendaraan
-- Laporan Periodik Export Excel
 
 ## Setup Project
 
@@ -66,7 +65,7 @@ Email    : admin@gmail.com\
 Password : 12345678
 
 ## Physical Data Model
-![PDM Aplikasi Pemesanan Kendaraan2](https://github.com/BagusFary/Aplikasi-Pemesanan-Kendaraan/assets/51037655/804f66bd-e648-45b5-a412-7fb6e2be7347)
+![PDM Aplikasi Pemesanan Kendaraan3](https://github.com/BagusFary/Aplikasi-Pemesanan-Kendaraan/assets/51037655/6e5de7ac-66f7-40dc-88c3-43f883c40a10)
 
 
 
