@@ -54,7 +54,7 @@ class PemesananExport implements FromQuery, WithMapping, WithHeadings
             $pemesanan->kendaraan->nama,
             $pemesanan->jadwal_start,
             $pemesanan->jadwal_end,
-            $pemesanan->konsumsi_bmm,
+            $pemesanan->konsumsi_bbm,
             $pemesanan->status,
             $pemesanan->created_at
         ];
