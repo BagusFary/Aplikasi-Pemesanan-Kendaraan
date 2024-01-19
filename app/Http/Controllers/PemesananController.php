@@ -22,7 +22,7 @@ class PemesananController extends Controller
             $dataKendaraan = Kendaraan::select('id','nama')->get();
             $dataDriver = Driver::select('id','nama')->get();
             $dataPemesanan = Pemesanan::with('user:id,name','driver:id,nama','kendaraan:id,nama')->get();
-            return view('dashboard.pemesanan.index',[
+            return view('dashboard.admin.pemesanan.index',[
                 "dataPemesanan" => $dataPemesanan,
                 "dataKendaraan" => $dataKendaraan,
                 "dataDriver" => $dataDriver

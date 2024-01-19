@@ -29,7 +29,9 @@
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ Auth::user()->name }}<i class="fas fa-user fa-fw"></i>
+            </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <form action='/logout' method="POST">
                     @csrf
@@ -66,13 +68,13 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-car-side" style="color:white"></i></div>
                         Data Kendaraan
                     </a>
-                    <a class="nav-link" href="/pemesanan">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-bell" style="color:white"></i></div>
-                        Pemesanan
-                    </a>
                     <a class="nav-link" href="/pihak">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group" style="color:white"></i></div>
                         Data Pihak
+                    </a>
+                    <a class="nav-link" href="/pemesanan">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-bell" style="color:white"></i></div>
+                        Pemesanan
                     </a>
                     @endif
                 </div>
@@ -96,7 +98,7 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                    <div class="text-muted">Copyright &copy; Your Website 2024</div>
                     <div>
                         <a href="#">Privacy Policy</a>
                         &middot;
