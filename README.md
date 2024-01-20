@@ -12,7 +12,7 @@ Framework Laravel
 # Bagian Belum Selesai
 - Grafik Pemakaian Kendaraan
 
-- # Bagian sudah di update
+# Bagian sudah di update
 - Riwayat Pemakaian Kendaraan (Updated / Done)
 - Panduan Penggunaan Aplikasi Pemesanan Kendaraan (Updated / Done)
 - Laporan Periodik Pemesanan Kendaraaan (Updated / Done)
