@@ -40,7 +40,7 @@ class DriverController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(DriverRequest $request)
     {
         if(Auth::check() && Auth::user()->roles == 'admin')
         {

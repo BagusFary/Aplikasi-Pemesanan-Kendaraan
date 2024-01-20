@@ -58,7 +58,7 @@ class KendaraanController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(KendaraanRequest $request)
     {
         if(Auth::check() && Auth::user()->roles == 'admin')
         {

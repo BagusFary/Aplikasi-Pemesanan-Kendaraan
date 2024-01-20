@@ -21,9 +21,10 @@ class PihakRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user_id = $this->input('id');
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email,'.$user_id,
         ];
     }
 }

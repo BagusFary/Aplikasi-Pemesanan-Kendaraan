@@ -50,7 +50,7 @@ class PihakController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(PihakRequest $request)
     {
         if(Auth::check() && Auth::user()->roles == 'admin')
         {

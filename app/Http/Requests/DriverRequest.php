@@ -21,9 +21,10 @@ class DriverRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user_id = $this->input('id');
         return [
             'nama' => 'required|max:100',
-            'email' => 'required|unique:drivers|max:100|email',
+            'email' => 'required|max:100|email|unique:drivers,email,'.$user_id,
             'phone' => 'required',
         ];
     }

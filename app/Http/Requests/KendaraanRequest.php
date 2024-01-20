@@ -21,9 +21,10 @@ class KendaraanRequest extends FormRequest
      */
     public function rules(): array
     {
+        $kendaraan_id = $this->input('id');
         return [
             'nama' => 'required|max:100',
-            'plat' => 'required|unique:kendaraan|max:15',
+            'plat' => 'required|max:15|unique:kendaraan,plat,'.$kendaraan_id,
             'konsumsi_bbm_per_km' => 'required',
             'jenis_kendaraan' => 'required',
             'kepemilikan' => 'required'
