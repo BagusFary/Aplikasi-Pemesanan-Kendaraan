@@ -84,21 +84,23 @@
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <div class="d-flex gap-2">
-                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                    data-bs-target="#modalEdit-{{ $item->id }}">
-                                                    <i class="fa-solid fa-pen-to-square"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDelete-{{ $item->id }}">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
+                                                @if ($item->status === 'menunggu')
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                        data-bs-target="#modalEdit-{{ $item->id }}">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </button>
+                                                @endif
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#modalDelete-{{ $item->id }}">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
                                                 @if ($item->status === 'menunggu' || $item->status === 'ditolak' || $item->status === 'selesai')
                                                 
                                                 @else
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#modalSelesai-{{ $item->id }}">
-                                                    <i class="fa-regular fa-circle-check"></i>
-                                                </button>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#modalSelesai-{{ $item->id }}">
+                                                        <i class="fa-regular fa-circle-check"></i>
+                                                    </button>
                                                 @endif
                                             </div>
                                         </div>
