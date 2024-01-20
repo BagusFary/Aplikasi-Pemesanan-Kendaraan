@@ -80,7 +80,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/update-pihak" method="post">
+                                                <form action="/pihak/update" method="post">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                                     <div class="mb-2">
@@ -111,7 +111,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="/delete-pihak" method="post">
+                                                <form action="/pihak/delete" method="post">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                                     <h6>
@@ -150,7 +150,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/store-pihak" method="post">
+                    <form action="/pihak/store" method="post">
                         @csrf
                         <div class="mb-2">
                             <label for="name">Nama Pihak</label>

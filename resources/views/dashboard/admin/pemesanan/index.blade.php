@@ -157,7 +157,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/store-pemesanan" method="post">
+                    <form action="/pemesanan/store" method="post">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="mb-2">
@@ -238,19 +238,19 @@
                         <br>
                         <h6>
                             Status :
-                            @if ($item->status === 0)
+                            @if ($item->status === 'menunggu')
                                 <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
-                            @elseif($item->status === 1)
+                            @elseif($item->status === 'disetujui')
                                 <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
-                            @elseif($item->status === 2)
+                            @elseif($item->status === 'ditolak')
                                 <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
-                            @elseif($item->status === 3)
+                            @elseif($item->status === 'selesai')
                                 <span class="badge rounded-pill text-bg-success">SELESAI</span>
                             @endif
                         </h6>
                         <br>
                     </div>
-                    <form action="/delete-pemesanan" method="post">
+                    <form action="/pemesanan/delete" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{ $item->id }}">
                         <div class="modal-footer">
@@ -272,7 +272,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/update-pemesanan" method="post">
+                        <form action="/pemesanan/update" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $item->id }}">
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">

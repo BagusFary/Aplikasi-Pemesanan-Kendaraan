@@ -21,22 +21,31 @@ use App\Http\Controllers\PersetujuanController;
 */
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', [DashboardController::class, 'index']);
-    Route::get('/kendaraan', [KendaraanController::class, 'index']);
-    Route::post('/store-kendaraan', [KendaraanController::class, 'store']);
-    Route::post('/update-kendaraan', [KendaraanController::class, 'update']);
-    Route::post('/delete-kendaraan', [KendaraanController::class, 'destroy']);
-    Route::get('/driver', [DriverController::class, 'index']);
-    Route::post('/store-driver', [DriverController::class, 'store']);
-    Route::post('/update-driver',[DriverController::class, 'update']);
-    Route::post('/delete-driver', [DriverController::class, 'destroy']);
-    Route::get('/pemesanan', [PemesananController::class, 'index']);
-    Route::post('/store-pemesanan', [PemesananController::class, 'store']);
-    Route::post('/update-pemesanan',[PemesananController::class, 'update']);
-    Route::post('/delete-pemesanan', [PemesananController::class, 'destroy']);
-    Route::get('/pihak', [PihakController::class, 'index']);
-    Route::post('/store-pihak', [PihakController::class, 'store']);
-    Route::post('/update-pihak', [PihakController::class, 'update']);
-    Route::post('/delete-pihak', [PihakController::class, 'destroy']);
+    Route::prefix('kendaraan')->group(function(){
+        Route::get('/', [KendaraanController::class, 'index']);
+        Route::post('/detail', [KendaraanController::class, 'detail']);
+        Route::post('/store', [KendaraanController::class, 'store']);
+        Route::post('/update', [KendaraanController::class, 'update']);
+        Route::post('/delete', [KendaraanController::class, 'destroy']);
+    });
+    Route::prefix('driver')->group(function(){
+        Route::get('/', [DriverController::class, 'index']);
+        Route::post('/store', [DriverController::class, 'store']);
+        Route::post('/update',[DriverController::class, 'update']);
+        Route::post('/delete', [DriverController::class, 'destroy']);
+    });
+    Route::prefix('pemesanan')->group(function(){
+        Route::get('/', [PemesananController::class, 'index']);
+        Route::post('/store', [PemesananController::class, 'store']);
+        Route::post('/update',[PemesananController::class, 'update']);
+        Route::post('/delete', [PemesananController::class, 'destroy']);
+    });
+    Route::prefix('pihak')->group(function(){
+        Route::get('/', [PihakController::class, 'index']);
+        Route::post('/store', [PihakController::class, 'store']);
+        Route::post('/update', [PihakController::class, 'update']);
+        Route::post('/delete', [PihakController::class, 'destroy']);
+    });
     Route::get('/persetujuan',[PersetujuanController::class,'index']);
     Route::post('/setuju',[PersetujuanController::class,'persetujuan']);
     Route::post('/pemesanan-selesai',[PemesananController::class,'pemesananSelesai']);

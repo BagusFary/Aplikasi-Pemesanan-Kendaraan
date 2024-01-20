@@ -21,9 +21,8 @@ class PihakController extends Controller
         }
     }
 
-    public function store(Pihakrequest $request)
+    public function store(PihakRequest $request)
     {
-        dd(Carbon::now());
         if(Auth::check() && Auth::user()->roles == 'admin')
         {
             $tambahPihak = User::create([

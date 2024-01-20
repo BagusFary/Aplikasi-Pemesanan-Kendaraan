@@ -21,7 +21,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/store-driver" method="POST">
+                            <form action="/driver/store" method="POST">
                                 @csrf
                                 <div class="mb-2">
                                     <label for="nama" class="form-label">Nama</label>
@@ -110,7 +110,7 @@
                                         aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <form action="/update-driver" method="POST">
+                                                <form action="/driver/update" method="POST">
                                                     @csrf
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit
@@ -175,7 +175,7 @@
                                                     </h6>
                                                     <br>
                                                 </div>
-                                                <form action="/delete-driver" method="POST">
+                                                <form action="/driver/delete" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                                     <div class="modal-footer">

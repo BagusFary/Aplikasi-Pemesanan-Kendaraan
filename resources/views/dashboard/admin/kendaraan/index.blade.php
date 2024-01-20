@@ -21,7 +21,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/store-kendaraan" method="POST">
+                            <form action="/kendaraan/store" method="POST">
                                 @csrf
                                 <div class="mb-2">
                                     <label for="nama" class="form-label">Nama</label>
@@ -143,7 +143,7 @@
                                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <form action="/update-kendaraan" method="POST">
+                                                <form action="/kendaraan/update" method="POST">
                                                 @csrf
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Kendaraan</h1>
@@ -263,7 +263,7 @@
                                                     </h6>
                                                     <br>
                                                 </div>
-                                                <form action="/delete-kendaraan" method="POST">
+                                                <form action="/kendaraan/delete" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                                     <div class="modal-footer">
