@@ -64,6 +64,9 @@ Start the server
 - Admin\
 Email    : admin@gmail.com\
 Password : 12345678
+- User/Pihak
+Email    : email yang dibuat Admin/Pegawai
+Password : 12345678
 
 # Panduan Penggunaan Aplikasi Pemesanan Kendaraan
 
