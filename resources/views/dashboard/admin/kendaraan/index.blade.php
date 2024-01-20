@@ -135,9 +135,13 @@
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $item->id }}">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
-                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $item->id }}">
-                                            <i class="fa-solid fa-clock-rotate-left"></i>
-                                        </button>
+                                        <form action="/kendaraan/detail" method="post">
+                                            @csrf
+                                            <input type="hidden" name="plat" value="{{ $item->plat }}">
+                                            <button type="submit" class="btn btn-info">
+                                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                     <div class="modal fade" id="modalEdit-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                                         aria-labelledby="staticBackdropLabel" aria-hidden="true">

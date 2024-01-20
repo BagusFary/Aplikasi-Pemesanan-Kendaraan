@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\KendaraanRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class KendaraanController extends Controller
 {
@@ -25,7 +26,13 @@ class KendaraanController extends Controller
     {
         if(Auth::check() && Auth::user()->roles == 'admin')
         {
-            
+            $detailKendaraan = Kendaraan::with(['pemesanan' => function (Builder $query) {
+                $query->where('status','selesai');
+            }])->where('plat',$request->plat)->first();
+
+            return view('dashboard.admin.kendaraan.riwayat',['detailKendaraan' => $detailKendaraan]);
+        }else{
+            return view('error.401');
         }
     }
 
