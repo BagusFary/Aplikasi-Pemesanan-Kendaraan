@@ -10,8 +10,10 @@ PHP 8.1.13
 Framework Laravel
 
 # Bagian Belum Selesai
-- Riwayat Pemakaian Kendaraan
 - Grafik Pemakaian Kendaraan
+
+- # Bagian sudah di update
+- Riwayat Pemakaian Kendaraan (Updated / Done)
 - Panduan Penggunaan Aplikasi Pemesanan Kendaraan (Updated / Done)
 - Laporan Periodik Pemesanan Kendaraaan (Updated / Done)
 
