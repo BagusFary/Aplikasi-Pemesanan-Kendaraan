@@ -10,7 +10,7 @@ PHP 8.1.13
 Framework Laravel
 
 # Bagian Belum Selesai
-- Panduan Penggunaan Aplikasi Pemesanan Kendaraan
+- Panduan Penggunaan Aplikasi Pemesanan Kendaraan (Updated/ Done)
 - Riwayat Pemakaian Kendaraan
 - Grafik Pemakaian Kendaraan
 - Laporan Periodik Pemesanan Kendaraaan (Updated / Done)
@@ -65,8 +65,20 @@ Start the server
 Email    : admin@gmail.com\
 Password : 12345678
 
+- User/Pihak\
+Email    : email yang dibuat Admin/Pegawai\
+Password : 12345678
+
+# Panduan Penggunaan Aplikasi Pemesanan Kendaraan
+
+1. Admin/Pegawai Login dengan username dan password yang sudah disediakan
+2. Admin/Pegawai membuat Data Kendaraan, Data Driver, dan Data Pihak yang menyetujui.
+3. Admin/Pegawai membuat pemesanan kendaraan dengan data kendaraan, data driver, dan data pihak yang sudah dibuat.
+4. Pihak yang menyetujui dapat login dengan username dan password yang sudah dibuat oleh admin
+
 ## Physical Data Model
-![PDM Aplikasi Pemesanan Kendaraan3](https://github.com/BagusFary/Aplikasi-Pemesanan-Kendaraan/assets/51037655/6e5de7ac-66f7-40dc-88c3-43f883c40a10)
+![PDM Aplikasi Pemesanan Kendaraan4](https://github.com/BagusFary/Aplikasi-Pemesanan-Kendaraan/assets/51037655/01191155-86fb-42d4-8178-ba15c1d60bc2)
+
 
 
 
