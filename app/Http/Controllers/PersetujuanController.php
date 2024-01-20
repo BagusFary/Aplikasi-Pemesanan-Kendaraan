@@ -43,7 +43,7 @@ class PersetujuanController extends Controller
             if($persetujuan_count >= 2)
             {
                 $pemesanan->update([
-                    'status' => 1
+                    'status' => 'disetujui'
                 ]);
             } 
 
@@ -54,7 +54,7 @@ class PersetujuanController extends Controller
             if ($userTotal === $total_persetujuan) {
                 if ($persetujuan_count < 2) { 
                     $pemesanan->update([
-                        'status' => 2,
+                        'status' => 'ditolak',
                     ]);
                 }
             }

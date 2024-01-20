@@ -37,14 +37,14 @@
                             <td>{{ $item->jadwal_end }}</td>
                             <td>{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}</td>
                             <td>
-                                @if ($item->status === 0)
-                                <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
-                                @elseif($item->status === 1)
-                                <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
-                                @elseif($item->status === 2)
-                                <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
-                                @elseif($item->status === 3)
-                                <span class="badge rounded-pill text-bg-success">SELESAI</span>
+                                @if ($item->status === 'menunggu')
+                                    <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
+                                @elseif($item->status === 'disetujui')
+                                    <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
+                                @elseif($item->status === 'ditolak')
+                                    <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
+                                @elseif($item->status === 'selesai')
+                                    <span class="badge rounded-pill text-bg-success">SELESAI</span>
                                 @endif
                             </td>
                             <td>
@@ -88,12 +88,28 @@
                                         Konsumsi BBM per KM : {{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}
                                     </h6>
                                     <br>
+                                    <h6>
+                                        Status Pemesanan : 
+                                        @if ($item->status === 'menunggu')
+                                            <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
+                                        @elseif($item->status === 'disetujui')
+                                            <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
+                                        @elseif($item->status === 'ditolak')
+                                            <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
+                                        @elseif($item->status === 'selesai')
+                                            <span class="badge rounded-pill text-bg-success">SELESAI</span>
+                                        @endif
+                                    </h6>
+                                    <br>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-between">
                                     <div>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
                                     <div class="d-flex mr-5 gap-1">
+                                        @if ($item->status === 'selesai')
+                                        
+                                        @else
                                         <form action="/setuju" method="post">
                                         @csrf
                                             <input type="hidden" name="pemesanan_id" value="{{ $item->id }}">
@@ -101,6 +117,7 @@
                                             <button type="submit" class="btn btn-danger" name="decline">TIDAK SETUJU</button>
                                             <button type="submit" class="btn btn-success" name="approve">SETUJU</button>
                                         </form>
+                                        @endif
                                     </div>
                                 </div>
                               </div>

@@ -112,6 +112,30 @@ class PemesananController extends Controller
         }
     }
 
+    public function pemesananSelesai(Request $request)
+    {
+        if(Auth::check() && Auth::user()->roles == 'admin')
+        {
+            $pemesananSelesai = Pemesanan::findOrFail($request->id);
+            $pemesananSelesai->update([
+                'status' => 'selesai'
+            ]);
+
+            if($pemesananSelesai)
+            {
+                Alert::success('Success', 'Status Pemesanan Berhasil Diubah');
+                return redirect('/pemesanan');
+                
+            } else {
+                
+                Alert::error('Failed', 'Status Pemesanan Gagal Diubah');
+                return redirect('/pemesanan');
+            }
+        } else {
+            return view('error.401');
+        }
+    }
+
     public function exportExcel(Request $request)
     {
         if($request->tanggal_awal > $request->tanggal_akhir || $request->tanggal_awal >= $request->tanggal_akhir)

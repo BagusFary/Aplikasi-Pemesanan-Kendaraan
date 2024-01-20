@@ -70,17 +70,17 @@
                                     <td>{{ $item->jadwal_end }}</td>
                                     <td>{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}</td>
                                     <td>
-                                        @if ($item->status === 0)
+                                        @if ($item->status === 'menunggu')
                                             <span class="badge rounded-pill text-bg-secondary">MENUNGGU PERSETUJUAN</span>
-                                        @elseif($item->status === 1)
+                                        @elseif($item->status === 'disetujui')
                                             <span class="badge rounded-pill text-bg-info">DISETUJUI</span>
-                                        @elseif($item->status === 2)
+                                        @elseif($item->status === 'ditolak')
                                             <span class="badge rounded-pill text-bg-danger">DITOLAK</span>
-                                        @elseif($item->status === 3)
+                                        @elseif($item->status === 'selesai')
                                             <span class="badge rounded-pill text-bg-success">SELESAI</span>
                                         @endif
                                     </td>
-                                    <td>{{ date_format($item->created_at, "Y-m-d") }}</td>
+                                    <td>{{ date_format($item->created_at, 'Y-m-d') }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <div class="d-flex gap-2">
@@ -91,6 +91,10 @@
                                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                     data-bs-target="#modalDelete-{{ $item->id }}">
                                                     <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modalSelesai-{{ $item->id }}">
+                                                    <i class="fa-regular fa-circle-check"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -116,17 +120,18 @@
                             @csrf
                             <div class="mb-2">
                                 <label for="tanggal_awal">Dari Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal_awal" name="tanggal_awal" placeholder="Masukkan tanggal"
-                                    required>
+                                <input type="date" class="form-control" id="tanggal_awal" name="tanggal_awal"
+                                    placeholder="Masukkan tanggal" required>
                             </div>
                             <div class="mb-2">
                                 <label for="tanggal_akhir">Hingga Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir" placeholder="Masukkan tanggal"
-                                    required>
+                                <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir"
+                                    placeholder="Masukkan tanggal" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-file-export"></i> Export Pemesanan</button>
+                                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-file-export"></i>
+                                    Export Pemesanan</button>
                         </form>
                     </div>
 
@@ -286,7 +291,8 @@
                             <div class="mb-2">
                                 <label for="konsumsi_bbm">Jarak Konsumsi BBM (KM)</label>
                                 <input type="text" class="form-control" id="konsumsi_bbm" name="konsumsi_bbm"
-                                    value="{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}" placeholder="Inputkan Angka" disabled>
+                                    value="{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}"
+                                    placeholder="Inputkan Angka" disabled>
                             </div>
                             <div class="mb-2">
                                 <label for="jadwal_start">Jadwal Mulai</label>
@@ -299,11 +305,66 @@
                                     value="{{ $item->jadwal_end }}" required>
                             </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer ">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalSelesai-{{ $item->id }}" data-bs-backdrop="static"
+            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ubah Status Pemesanan Dibawah Menjadi
+                            Selesai?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-2">
+                            <label for="driver_id">Driver</label>
+                            <select class="form-select" id="driver_id" name="driver_id" disabled>
+                                @foreach ($dataDriver as $driverSelect)
+                                    <option value="{{ $driverSelect->id }}"
+                                        {{ $item->driver->id == $driverSelect->id ? 'selected' : '' }}>
+                                        {{ $driverSelect->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label for="kendaraan_id">Kendaraan</label>
+                            <input type="hidden" name="kendaraan_id" value="{{ $item->kendaraan->id }}">
+                            <input type="text" class="form-control" id="kendaraan_id"
+                                value="{{ $item->kendaraan->nama }}" disabled>
+                        </div>
+                        <div class="mb-2">
+                            <label for="konsumsi_bbm">Jarak Konsumsi BBM (KM)</label>
+                            <input type="text" class="form-control" id="konsumsi_bbm" name="konsumsi_bbm"
+                                value="{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}"
+                                placeholder="Inputkan Angka" disabled>
+                        </div>
+                        <div class="mb-2">
+                            <label for="jadwal_start">Jadwal Mulai</label>
+                            <input type="date" class="form-control" id="jadwal_start" name="jadwal_start"
+                                value="{{ $item->jadwal_start }}" disabled>
+                        </div>
+                        <div class="mb-2">
+                            <label for="jadwal_end">Jadwal Berakhir</label>
+                            <input type="date" class="form-control" id="jadwal_end" name="jadwal_end"
+                                value="{{ $item->jadwal_end }}" disabled>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <form action="/pemesanan-selesai" method="post">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <button type="submit" class="btn btn-outline-success">Selesai</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

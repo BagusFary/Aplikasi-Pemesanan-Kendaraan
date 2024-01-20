@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/delete-pihak', [PihakController::class, 'destroy']);
     Route::get('/persetujuan',[PersetujuanController::class,'index']);
     Route::post('/setuju',[PersetujuanController::class,'persetujuan']);
+    Route::post('/pemesanan-selesai',[PemesananController::class,'pemesananSelesai']);
     Route::post('/export-excel',[PemesananController::class,'exportExcel']);
 });
 
