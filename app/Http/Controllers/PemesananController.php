@@ -64,29 +64,35 @@ class PemesananController extends Controller
 
     public function update(PemesananRequest $request)
     {
-        if($request->jadwal_start > $request->jadwal_end || $request->jadwal_start >= $request->jadwal_end)
+        if($request->status != 'menunggu')
         {
-            Alert::warning('Warning', 'Jadwal Berakhir tidak boleh diatas atau sama dengan jadwal Mulai');
-            return redirect('/pemesanan');
-        } else {
-            if(Auth::check() && Auth::user()->roles == 'admin')
+            if($request->jadwal_start > $request->jadwal_end || $request->jadwal_start >= $request->jadwal_end)
             {
-                $updatePemesanan = Pemesanan::findOrFail($request->id);
-                $updatePemesanan->update($request->all());
-    
-                if($updatePemesanan)
+                Alert::warning('Warning', 'Jadwal Berakhir tidak boleh diatas atau sama dengan jadwal Mulai');
+                return redirect('/pemesanan');
+            } else {
+                if(Auth::check() && Auth::user()->roles == 'admin')
                 {
-                    Alert::success('Success', 'Data Berhasil Disimpan');
-                    return redirect('/pemesanan');
-                    
-                } else {
-                    
-                    Alert::error('Failed', 'Data Berhasil Disimpan');
-                    return redirect('/pemesanan');
+                    $updatePemesanan = Pemesanan::findOrFail($request->id);
+                    $updatePemesanan->update($request->all());
+        
+                    if($updatePemesanan)
+                    {
+                        Alert::success('Success', 'Data Berhasil Disimpan');
+                        return redirect('/pemesanan');
+                        
+                    } else {
+                        
+                        Alert::error('Failed', 'Data Berhasil Disimpan');
+                        return redirect('/pemesanan');
+                    }
+                }else {
+                    return view('error.401');
                 }
-            }else {
-                return view('error.401');
             }
+        } else {
+                Alert::warning('Warning', 'Ubah data tidak diperbolehkan');
+                return redirect('/pemesanan');
         }
     }
 

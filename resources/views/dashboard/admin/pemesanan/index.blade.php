@@ -90,10 +90,6 @@
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </button>
                                                 @endif
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#modalDelete-{{ $item->id }}">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
                                                 @if ($item->status === 'menunggu' || $item->status === 'ditolak' || $item->status === 'selesai')
                                                 
                                                 @else
@@ -102,6 +98,10 @@
                                                         <i class="fa-regular fa-circle-check"></i>
                                                     </button>
                                                 @endif
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modalDelete-{{ $item->id }}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </td>
@@ -278,6 +278,7 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $item->id }}">
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="status" value="{{ $item->status }}">
                             <div class="mb-2">
                                 <label for="driver_id">Driver</label>
                                 <select class="form-select" id="driver_id" name="driver_id">
