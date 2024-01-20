@@ -92,7 +92,7 @@
                                                     data-bs-target="#modalDelete-{{ $item->id }}">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
-                                                @if ($item->status === 'menunggu' || $item->status === 'ditolak')
+                                                @if ($item->status === 'menunggu' || $item->status === 'ditolak' || $item->status === 'selesai')
                                                 
                                                 @else
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"

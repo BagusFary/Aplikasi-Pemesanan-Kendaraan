@@ -114,7 +114,7 @@ class PemesananController extends Controller
 
     public function pemesananSelesai(Request $request)
     {
-        if($request->status === 'menunggu' || $request->status === 'ditolak')
+        if($request->status === 'menunggu' || $request->status === 'ditolak' || $request->status === 'selesai')
         {
             Alert::warning('Peringatan', 'Status pemesanan '. $request->status);
             return redirect('/pemesanan');
