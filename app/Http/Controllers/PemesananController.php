@@ -114,25 +114,31 @@ class PemesananController extends Controller
 
     public function pemesananSelesai(Request $request)
     {
-        if(Auth::check() && Auth::user()->roles == 'admin')
+        if($request->status === 'menunggu' || $request->status === 'ditolak')
         {
-            $pemesananSelesai = Pemesanan::findOrFail($request->id);
-            $pemesananSelesai->update([
-                'status' => 'selesai'
-            ]);
-
-            if($pemesananSelesai)
-            {
-                Alert::success('Success', 'Status Pemesanan Berhasil Diubah');
-                return redirect('/pemesanan');
-                
-            } else {
-                
-                Alert::error('Failed', 'Status Pemesanan Gagal Diubah');
-                return redirect('/pemesanan');
-            }
+            Alert::warning('Peringatan', 'Status pemesanan '. $request->status);
+            return redirect('/pemesanan');
         } else {
-            return view('error.401');
+            if(Auth::check() && Auth::user()->roles == 'admin')
+            {
+                $pemesananSelesai = Pemesanan::findOrFail($request->id);
+                $pemesananSelesai->update([
+                    'status' => 'selesai'
+                ]);
+    
+                if($pemesananSelesai)
+                {
+                    Alert::success('Success', 'Status Pemesanan Berhasil Diubah');
+                    return redirect('/pemesanan');
+                    
+                } else {
+                    
+                    Alert::error('Failed', 'Status Pemesanan Gagal Diubah');
+                    return redirect('/pemesanan');
+                }
+            } else {
+                return view('error.401');
+            }
         }
     }
 

@@ -33,16 +33,16 @@ class PemesananExport implements FromQuery, WithMapping, WithHeadings
     public function map($pemesanan): array
     {
 
-        if($pemesanan->status === 0)
+        if($pemesanan->status === 'menunggu')
         {
             $pemesanan['status'] = 'MENUNGGU PERSETUJUAN';
-        } elseif($pemesanan->status === 1)
+        } elseif($pemesanan->status === 'disetujui')
         {
             $pemesanan['status'] = 'DISETUJUI';
-        }elseif($pemesanan->status === 2)
+        }elseif($pemesanan->status === 'ditolak')
         {
             $pemesanan['status'] = 'DITOLAK';
-        }elseif($pemesanan->status === 3)
+        }elseif($pemesanan->status === 'selesai')
         {
             $pemesanan['status'] = 'SELESAI';
         }

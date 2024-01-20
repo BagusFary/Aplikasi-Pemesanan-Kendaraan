@@ -92,10 +92,14 @@
                                                     data-bs-target="#modalDelete-{{ $item->id }}">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
+                                                @if ($item->status === 'menunggu' || $item->status === 'ditolak')
+                                                
+                                                @else
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#modalSelesai-{{ $item->id }}">
                                                     <i class="fa-regular fa-circle-check"></i>
                                                 </button>
+                                                @endif
                                             </div>
                                         </div>
                                     </td>
@@ -362,6 +366,7 @@
                         <form action="/pemesanan-selesai" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $item->id }}">
+                            <input type="hidden" name="status" value="{{ $item->status }}">
                             <button type="submit" class="btn btn-outline-success">Selesai</button>
                         </form>
                     </div>

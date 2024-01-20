@@ -135,6 +135,9 @@
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $item->id }}">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
+                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $item->id }}">
+                                            <i class="fa-solid fa-clock-rotate-left"></i>
+                                        </button>
                                     </div>
                                     <div class="modal fade" id="modalEdit-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
