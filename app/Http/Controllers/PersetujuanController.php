@@ -17,12 +17,14 @@ class PersetujuanController extends Controller
         {
             $dataPemesanan = Pemesanan::with('user:id,name','driver:id,nama','kendaraan:id,nama')->get();
             return view('dashboard.user.persetujuan.index',['dataPemesanan' => $dataPemesanan]);
+        } else {
+            return view('error.401');
         }
     }
 
     public function persetujuan(Request $request)
     {
-        if(Auth::check() )
+        if(Auth::check()  && Auth()->user()->roles == 'user')
         {
             $pemesanan = Pemesanan::find($request->pemesanan_id);
             $persetujuan = $pemesanan->persetujuan()->where('user_id', $request->user_id)->exists();
@@ -70,6 +72,8 @@ class PersetujuanController extends Controller
                 return redirect('/persetujuan');
             }
         
+        } else {
+            return view('error.401');
         }
     }
 }

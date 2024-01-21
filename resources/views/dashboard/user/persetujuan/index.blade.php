@@ -107,7 +107,7 @@
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
                                     <div class="d-flex mr-5 gap-1">
-                                        @if ($item->status === 'selesai')
+                                        @if ($item->status === 'selesai' || $item->status === 'ditolak' || $item->status === 'disetujui')
                                         
                                         @else
                                         <form action="/setuju" method="post">
