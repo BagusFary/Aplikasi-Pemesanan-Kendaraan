@@ -33,6 +33,10 @@
                 {{ Auth::user()->name }}<i class="fas fa-user fa-fw"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                {{-- <div class="justify-content-center">
+                    <a href="/ubah-password" class="dropdown-item">Ubah Password</a>
+                </div>
+                <li><hr class="dropdown-divider"></li> --}}
                 <form action='/logout' method="POST">
                     @csrf
                     <div class="justify-content-center">

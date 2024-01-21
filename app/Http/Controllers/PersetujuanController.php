@@ -40,9 +40,9 @@ class PersetujuanController extends Controller
                 'is_approved' => $is_approved,
             ]);
             
-            $persetujuan_count = $pemesanan->persetujuan()->where('is_approved',true)->count();
+            $persetujuan_count_true = $pemesanan->persetujuan()->where('is_approved',true)->count();
 
-            if($persetujuan_count >= 2)
+            if($persetujuan_count_true >= 2)
             {
                 $pemesanan->update([
                     'status' => 'disetujui'
@@ -54,7 +54,7 @@ class PersetujuanController extends Controller
             $total_persetujuan = $pemesanan->persetujuan()->count();
 
             if ($userTotal === $total_persetujuan) {
-                if ($persetujuan_count < 2) { 
+                if ($persetujuan_count_true < 2) { 
                     $pemesanan->update([
                         'status' => 'ditolak',
                     ]);
