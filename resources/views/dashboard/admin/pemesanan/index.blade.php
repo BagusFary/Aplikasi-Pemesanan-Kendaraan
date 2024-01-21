@@ -90,6 +90,10 @@
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </button>
                                                 @endif
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modalDelete-{{ $item->id }}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
                                                 @if ($item->status === 'menunggu' || $item->status === 'ditolak' || $item->status === 'selesai')
                                                 
                                                 @else
@@ -98,10 +102,6 @@
                                                         <i class="fa-regular fa-circle-check"></i>
                                                     </button>
                                                 @endif
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#modalDelete-{{ $item->id }}">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
                                             </div>
                                         </div>
                                     </td>
