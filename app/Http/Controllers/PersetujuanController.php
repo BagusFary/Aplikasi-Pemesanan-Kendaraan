@@ -28,50 +28,54 @@ class PersetujuanController extends Controller
         {
             $pemesanan = Pemesanan::find($request->pemesanan_id);
             $persetujuan = $pemesanan->persetujuan()->where('user_id', $request->user_id)->exists();
-            $is_approved = $request->has('approve') ? true : false;
+            
             if ($persetujuan) 
             {
                 Alert::error('Failed', 'Anda sudah melakukan persetujuan');
                 return redirect('/persetujuan');
-            }
-            $dataPersetujuan = Persetujuan::create([
-                'user_id' => $request->user_id,
-                'pemesanan_id' => $request->pemesanan_id,
-                'is_approved' => $is_approved,
-            ]);
-            
-            $persetujuan_count_true = $pemesanan->persetujuan()->where('is_approved',true)->count();
+                
+            } else {
 
-            if($persetujuan_count_true >= 2)
-            {
-                $pemesanan->update([
-                    'status' => 'disetujui'
+                $is_approved = $request->has('approve') ? true : false;
+                $dataPersetujuan = Persetujuan::create([
+                    'user_id' => $request->user_id,
+                    'pemesanan_id' => $request->pemesanan_id,
+                    'is_approved' => $is_approved,
                 ]);
-            } 
-
-            $userTotal = User::where('roles', 'user')->count();
-
-            $total_persetujuan = $pemesanan->persetujuan()->count();
-
-            if ($userTotal === $total_persetujuan) {
-                if ($persetujuan_count_true < 2) { 
+                
+                $persetujuan_count_true = $pemesanan->persetujuan()->where('is_approved',true)->count();
+    
+                if($persetujuan_count_true >= 2)
+                {
                     $pemesanan->update([
-                        'status' => 'ditolak',
+                        'status' => 'disetujui'
                     ]);
+                } 
+    
+                $userTotal = User::where('roles', 'user')->count();
+    
+                $total_persetujuan = $pemesanan->persetujuan()->count();
+    
+                if ($userTotal === $total_persetujuan) {
+                    if ($persetujuan_count_true < 2) { 
+                        $pemesanan->update([
+                            'status' => 'ditolak',
+                        ]);
+                    }
+                }
+    
+                if($dataPersetujuan)
+                {
+                    Alert::success('Success', 'Persetujuan Pemesanan Berhasil');
+                    return redirect('/persetujuan');
+                    
+                } else {
+                    
+                    Alert::error('Failed', 'Persetujuan Pemesanan Gagal');
+                    return redirect('/persetujuan');
                 }
             }
 
-            if($dataPersetujuan)
-            {
-                Alert::success('Success', 'Persetujuan Pemesanan Berhasil');
-                return redirect('/persetujuan');
-                
-            } else {
-                
-                Alert::error('Failed', 'Persetujuan Pemesanan Gagal');
-                return redirect('/persetujuan');
-            }
-        
         } else {
             return view('error.401');
         }
