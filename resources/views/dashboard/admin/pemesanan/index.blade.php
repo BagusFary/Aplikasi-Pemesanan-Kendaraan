@@ -54,7 +54,7 @@
                                 <th>Kendaraan</th>
                                 <th>Jadwal Mulai</th>
                                 <th>Jadwal Berakhir</th>
-                                <th>Konsumsi BBM per KM</th>
+                                <th>Total Konsumsi BBM per KM</th>
                                 <th>Status</th>
                                 <th>Dibuat Pada</th>
                                 <th>Action</th>
@@ -235,7 +235,7 @@
                         </h6>
                         <br>
                         <h6>
-                            Konsumsi BBM per KM : {{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}
+                            Total Konsumsi BBM per KM : {{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}
                         </h6>
                         <br>
                         <h6>
@@ -296,7 +296,7 @@
                                     value="{{ $item->kendaraan->nama }}" disabled>
                             </div>
                             <div class="mb-2">
-                                <label for="konsumsi_bbm">Jarak Konsumsi BBM (KM)</label>
+                                <label for="konsumsi_bbm">Total Konsumsi BBM per KM</label>
                                 <input type="text" class="form-control" id="konsumsi_bbm" name="konsumsi_bbm"
                                     value="{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}"
                                     placeholder="Inputkan Angka" disabled>
@@ -348,7 +348,7 @@
                                 value="{{ $item->kendaraan->nama }}" disabled>
                         </div>
                         <div class="mb-2">
-                            <label for="konsumsi_bbm">Jarak Konsumsi BBM (KM)</label>
+                            <label for="konsumsi_bbm">Total Konsumsi BBM per KM</label>
                             <input type="text" class="form-control" id="konsumsi_bbm" name="konsumsi_bbm"
                                 value="{{ 'Rp ' . number_format($item->konsumsi_bbm, 2, ',', '.') }}"
                                 placeholder="Inputkan Angka" disabled>
